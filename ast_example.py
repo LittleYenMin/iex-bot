@@ -21,7 +21,5 @@ def get_operators(node: ast.AST):
     return operators
 
 
-# Get AST by compiler
-node = ast.parse('a=5*2*3*4/5')
-print(ast.dump(node))
-print(get_operators(node))
+def parse(syntax: str) -> [ast.operator]:
+    return get_operators(ast.parse(syntax))
