@@ -6,6 +6,7 @@ def is_white_list_operators(node: ast.operator):
         print('合法')
 
 
+# Get operators from AST nodes
 def get_operators(node: ast.AST):
     operators = []
     for field, value in ast.iter_fields(node):
@@ -20,5 +21,6 @@ def get_operators(node: ast.AST):
     return operators
 
 
+# parse syntax string to AST by ast lib, and return list of operator in AST.
 def parse(syntax: str) -> [ast.operator]:
     return get_operators(ast.parse(syntax))
