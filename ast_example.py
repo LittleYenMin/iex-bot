@@ -9,7 +9,6 @@ def is_white_list_operators(node: ast.operator):
 def get_operators(node: ast.AST):
     operators = []
     for field, value in ast.iter_fields(node):
-        # white_list_operators(value)
         if isinstance(value, list):
             for item in value:
                 if isinstance(item, ast.AST):
