@@ -17,16 +17,16 @@ def white_list_validator(node):
         throw_flag = True
 
 
-# Get operators from AST nodes
-def get_operators(node: ast.AST):
-    operators = []
-    for n in ast.walk(node):
-        for field, value in ast.iter_fields(n):
-            if field == 'op':
-                operators.append(value)
-    return operators
-
-
 # parse syntax string to AST by ast lib, and return list of operator in AST.
 def parse(syntax: str) -> [ast.operator]:
-    return get_operators(ast.parse(syntax))
+    node = ast.parse(syntax)
+    white_list_validator(node)
+
+
+# is_white_list_operators(None)
+print(white_list_validator(ast.parse('a/=10')))
+print(white_list_validator(ast.parse('a=10')))
+print(white_list_validator(ast.parse('ast.dump(node)')))
+print(white_list_validator(ast.parse('import ast')))
+# print(parse('a = 100/5'))
+# print(parse('ast.dump(node)'))
