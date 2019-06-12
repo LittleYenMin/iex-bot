@@ -13,15 +13,17 @@ def white_list_validator(node):
                 throw_flag = False
                 break
         if throw_flag:
-            raise Exception('Illegal node: {}'.format(type(n).__name__))
+            raise ValueError('Illegal node: {}'.format(type(n).__name__))
         throw_flag = True
 
 
 # parse syntax string to AST by ast lib, and return list of operator in AST.
 def parse(syntax: str) -> [ast.operator]:
-    node = ast.parse(syntax)
-    white_list_validator(node)
-
+    try:
+        node = ast.parse(syntax)
+        white_list_validator(node)
+    except Exception:
+        raise
 
 # is_white_list_operators(None)
 print(white_list_validator(ast.parse('a/=10')))
