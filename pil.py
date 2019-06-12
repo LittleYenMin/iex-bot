@@ -9,15 +9,10 @@ def is_white_list_operators(node: ast.operator):
 # Get operators from AST nodes
 def get_operators(node: ast.AST):
     operators = []
-    for field, value in ast.iter_fields(node):
-        if isinstance(value, list):
-            for item in value:
-                if isinstance(item, ast.AST):
-                    operators.extend(get_operators(item))
-        elif isinstance(value, ast.AST):
-            operators.extend(get_operators(value))
-        if field == 'op':
-            operators.append(value)
+    for n in ast.walk(node):
+        for field, value in ast.iter_fields(n):
+            if field == 'op':
+                operators.append(value)
     return operators
 
 
