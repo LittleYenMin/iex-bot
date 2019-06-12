@@ -1,9 +1,20 @@
 import ast
 
 
-def is_white_list_operators(node: ast.operator):
-    if isinstance(node, ast.Mult):
-        print('合法')
+white_list = [ast.Module, ast.Store, ast.Expr, ast.Assign,
+              ast.BinOp, ast.Num, ast.Name, ast.stmt, ast.operator, ast.Load]
+
+
+def white_list_validator(node):
+    throw_flag = True
+    for n in ast.walk(node):
+        for item in white_list:
+            if isinstance(n, item):
+                throw_flag = False
+                break
+        if throw_flag:
+            raise Exception('Illegal node: {}'.format(type(n).__name__))
+        throw_flag = True
 
 
 # Get operators from AST nodes
