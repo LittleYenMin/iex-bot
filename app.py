@@ -27,8 +27,8 @@ def pix_executer(msg: str):
         return eval(msg)
     except ValueError as e:
         return str(e)
-    except Exception:
-        return '...something went wrong'
+    except Exception as e:
+        return '...something went wrong\n{}'.format(e)
 
 
 @app.route("/callback", methods=['POST'])
