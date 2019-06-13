@@ -1,1 +1,6 @@
+# env file
+.env
+
+# IDE
 .idea
+__pycache__

@@ -24,11 +24,3 @@ def parse(syntax: str) -> [ast.operator]:
         white_list_validator(node)
     except Exception:
         raise
-
-# is_white_list_operators(None)
-print(white_list_validator(ast.parse('a/=10')))
-print(white_list_validator(ast.parse('a=10')))
-print(white_list_validator(ast.parse('ast.dump(node)')))
-print(white_list_validator(ast.parse('import ast')))
-# print(parse('a = 100/5'))
-# print(parse('ast.dump(node)'))
