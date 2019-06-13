@@ -1,6 +1,8 @@
 IEX bot in Python
 ------
-- [ ] AST
-- [ ] eval
+- [x] AST
+- [x] eval
+
+![](./readme/demo.jpg)
 
 Inspired by [Elixir.tw meetup](https://www.meetup.com/elixirtw-taipei/events/261889208/)
