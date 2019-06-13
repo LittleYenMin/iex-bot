@@ -1,1 +1,4 @@
-pytest
+pytest==4.6.3
+line-bot-sdk
+flask==1.0.3
+python-dotenv==0.10.3
